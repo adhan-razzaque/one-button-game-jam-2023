@@ -46,6 +46,15 @@ func calculate_pull(start: Vector2, end: Vector2) -> void:
 		state_transition("Grounded", true)
 		return
 	
+	# Remap to cubic ease out curve
+	var dist_sign: Vector2 = dist.sign()
+	dist = dist.abs()
+	dist /= max_throw_length
+	dist.x = Easing.Cubic.EaseOut(dist.x, 0, 1, 1)
+	dist.y = Easing.Cubic.EaseOut(dist.y, 0, 1, 1)
+	dist *= max_throw_length
+	dist *= dist_sign
+
 	pull_vector = dist
 
 
