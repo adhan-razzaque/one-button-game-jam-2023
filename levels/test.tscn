@@ -22,12 +22,12 @@ shape = SubResource("CapsuleShape2D_omrd4")
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 texture = ExtResource("2_gkvgc")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(577, 399)
 scale = Vector2(6.96, 0.650604)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 shape = SubResource("RectangleShape2D_s41ny")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
 texture = ExtResource("2_gkvgc")
