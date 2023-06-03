@@ -26,32 +26,38 @@ initial_state = NodePath("GroundedEarth")
 
 [node name="GroundedEarth" type="Node" parent="StateMachine"]
 script = ExtResource("4_h8s85")
-throw_modifier = 1.444
+throw_modifier = 1.5
+
+[node name="FallingEarth" type="Node" parent="StateMachine"]
+script = ExtResource("5_mgrh4")
+mass = 3.0
 
 [node name="GroundedAir" type="Node" parent="StateMachine"]
 script = ExtResource("4_h8s85")
+throw_modifier = 2.0
+element = 1
+
+[node name="FallingAir" type="Node" parent="StateMachine"]
+script = ExtResource("5_mgrh4")
+mass = 1.5
 element = 1
 
 [node name="GroundedWater" type="Node" parent="StateMachine"]
 script = ExtResource("4_h8s85")
+throw_modifier = 1.3
+element = 2
+
+[node name="FallingWater" type="Node" parent="StateMachine"]
+script = ExtResource("5_mgrh4")
+mass = 1.5
 element = 2
 
 [node name="GroundedFire" type="Node" parent="StateMachine"]
 script = ExtResource("4_h8s85")
+throw_modifier = 1.3
 element = 3
-
-[node name="FallingEarth" type="Node" parent="StateMachine"]
-script = ExtResource("5_mgrh4")
-mass = 2.645
-
-[node name="FallingAir" type="Node" parent="StateMachine"]
-script = ExtResource("5_mgrh4")
-element = 1
-
-[node name="FallingWater" type="Node" parent="StateMachine"]
-script = ExtResource("5_mgrh4")
-element = 2
 
 [node name="FallingFire" type="Node" parent="StateMachine"]
 script = ExtResource("5_mgrh4")
+mass = 1.5
 element = 3
