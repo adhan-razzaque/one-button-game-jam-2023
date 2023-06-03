@@ -1,14 +1,99 @@
-[gd_scene load_steps=7 format=3 uid="uid://bu5rcrpsnttq1"]
+[gd_scene load_steps=15 format=3 uid="uid://bu5rcrpsnttq1"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_gsmm0"]
-[ext_resource type="Texture2D" uid="uid://72lsjl0dnsqq" path="res://icon.svg" id="2_2hlfe"]
+[ext_resource type="Texture2D" uid="uid://nkiapb44cytb" path="res://art/player/player_0004.png" id="2_hewar"]
+[ext_resource type="Texture2D" uid="uid://r4spwinmew0o" path="res://art/player/player_0000.png" id="2_tqhgm"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="3_5f34i"]
+[ext_resource type="Texture2D" uid="uid://dqq2777cbkn0k" path="res://art/player/player_0002.png" id="3_cd454"]
+[ext_resource type="Texture2D" uid="uid://dmxlqab5o7d4y" path="res://art/player/player_0001.png" id="3_l3qwj"]
 [ext_resource type="Script" path="res://scripts/states/grounded.gd" id="4_h8s85"]
+[ext_resource type="Texture2D" uid="uid://lirs32cmrd6t" path="res://art/player/player_0006.png" id="4_uers3"]
 [ext_resource type="Script" path="res://scripts/states/falling.gd" id="5_mgrh4"]
+[ext_resource type="Texture2D" uid="uid://eup4poadchai" path="res://art/player/player_0005.png" id="6_28dtc"]
+[ext_resource type="Texture2D" uid="uid://dwpw3w4wdao2p" path="res://art/player/player_0003.png" id="7_epohd"]
+[ext_resource type="Texture2D" uid="uid://bdmx0lusbhakh" path="res://art/player/player_0007.png" id="8_eoi8f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omrd4"]
-radius = 63.0
-height = 126.0
+height = 24.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ujypr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hewar")
+}],
+"loop": true,
+"name": &"idle_air",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cd454")
+}],
+"loop": true,
+"name": &"idle_earth",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_uers3")
+}],
+"loop": true,
+"name": &"idle_fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tqhgm")
+}],
+"loop": true,
+"name": &"idle_water",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hewar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_28dtc")
+}],
+"loop": true,
+"name": &"run_air",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cd454")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_epohd")
+}],
+"loop": true,
+"name": &"run_earth",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_uers3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_eoi8f")
+}],
+"loop": true,
+"name": &"run_fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tqhgm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_l3qwj")
+}],
+"loop": true,
+"name": &"run_water",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(565, 73)
@@ -17,8 +102,9 @@ script = ExtResource("1_gsmm0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_omrd4")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_2hlfe")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ujypr")
+animation = &"run_water"
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_5f34i")
@@ -61,3 +147,5 @@ element = 3
 script = ExtResource("5_mgrh4")
 mass = 1.5
 element = 3
+
+[connection signal="transitioned" from="StateMachine" to="." method="_on_state_machine_transitioned"]

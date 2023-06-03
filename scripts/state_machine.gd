@@ -4,7 +4,7 @@ class_name StateMachine
 extends Node
 
 ## Emitted when transitioning to a new state.
-signal transitioned(state_name)
+signal transitioned(node_path: NodePath)
 
 ## Path to the initial active state. We export it to be able to pick the initial state in the inspector.
 @export var initial_state := NodePath()
@@ -52,4 +52,4 @@ func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
 	state.exit()
 	state = get_node(target_state_name) as State
 	state.enter(msg)
-	emit_signal("transitioned", state.name)
+	emit_signal("transitioned", state.get_path())
