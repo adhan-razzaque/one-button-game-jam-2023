@@ -7,11 +7,20 @@ extends PlayerState
 @export var min_throw_length := 1.0
 @export var idle_animation_name: StringName
 @export var run_animation_name: StringName
+@export var line2D_path: NodePath
+
+@onready var _line2D := get_node(line2D_path) as Line2D
 
 var pull_started := false
 var pull_vector := Vector2()
 var start_position := Vector2()
 var _is_sliding := false
+
+
+func _ready() -> void:
+	super._ready()
+	_line2D.visible = false
+	assert(_line2D.points.size() == 2)
 
 
 # Upon entering the state, we set the Player node's velocity to zero.
@@ -24,19 +33,42 @@ func enter(_msg := {}) -> void:
 
 ## Handle input events from `_unhandled_input()`
 func handle_input(_event: InputEvent) -> void:
-	var mouseEvent := _event as InputEventMouseButton
+	var mouseButtonEvent := _event as InputEventMouseButton
+	if mouseButtonEvent:
+		handle_mouse_button_input(mouseButtonEvent)
+		return
+
+	var mouseEvent := _event as InputEventMouse
 	if mouseEvent:
 		handle_mouse_input(mouseEvent)
+		return
 
 
-func handle_mouse_input(_event: InputEventMouseButton) -> void:
+func handle_mouse_input(_event: InputEventMouse) -> void:
+	if not pull_started:
+		return
+	
+	var cursor_pos: Vector2 = _event.position
+	var line_vector: Vector2 = cursor_pos - start_position
+
+	if line_vector.length() > max_throw_length:
+		cursor_pos = start_position + (line_vector.normalized() * max_throw_length)
+
+	_line2D.set_point_position(1, cursor_pos)
+
+
+func handle_mouse_button_input(_event: InputEventMouseButton) -> void:
 	if _event.button_index == MOUSE_BUTTON_LEFT and _event.pressed:
 		print("Left button was clicked at ", _event.position)
 		pull_started = true
 		start_position = _event.position
+		_line2D.visible = true
+		_line2D.set_point_position(0, start_position)
+		_line2D.set_point_position(1, start_position)
 	if _event.button_index == MOUSE_BUTTON_LEFT and not _event.pressed:
 		print("Left button was released at ", _event.position)
 		calculate_pull(start_position, _event.position)
+		_line2D.visible = false
 
 
 func calculate_pull(start: Vector2, end: Vector2) -> void:
