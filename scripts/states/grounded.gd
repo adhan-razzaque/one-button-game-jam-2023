@@ -11,6 +11,7 @@ extends PlayerState
 var pull_started := false
 var pull_vector := Vector2()
 var start_position := Vector2()
+var _is_sliding := false
 
 
 # Upon entering the state, we set the Player node's velocity to zero.
@@ -69,12 +70,25 @@ func physics_update(_delta: float) -> void:
 		state_transition("Falling")
 		return
 
+	# Animation Selection
+	if abs(player.velocity.x) > 0:
+		if not _is_sliding:
+			_play_run_animation()
+			_is_sliding = true
+	else:
+		if _is_sliding:
+			_play_idle_animation()
+			_is_sliding = false
+
 	# Movement
 	if not pull_vector.is_zero_approx():
 		player.velocity = pull_vector * throw_modifier
 		pull_vector = Vector2.ZERO
+		_play_run_animation()
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, horizontal_damping)
+		if player.velocity.x == 0:
+			_play_idle_animation()
 
 	player.move_and_slide()
 
@@ -84,3 +98,10 @@ func _play_idle_animation() -> void:
 		return
 	
 	player.animator.play(idle_animation_name)
+
+
+func _play_run_animation() -> void:
+	if run_animation_name.is_empty():
+		return
+
+	player.animator.play(run_animation_name)

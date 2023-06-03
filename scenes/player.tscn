@@ -112,6 +112,7 @@ initial_state = NodePath("GroundedEarth")
 
 [node name="GroundedEarth" type="Node" parent="StateMachine"]
 script = ExtResource("4_h8s85")
+horizontal_damping = 45.0
 throw_modifier = 1.5
 idle_animation_name = &"idle_earth"
 run_animation_name = &"run_earth"
@@ -123,6 +124,7 @@ fall_animation_name = &"run_earth"
 
 [node name="GroundedAir" type="Node" parent="StateMachine"]
 script = ExtResource("4_h8s85")
+horizontal_damping = 25.0
 throw_modifier = 2.0
 idle_animation_name = &"idle_air"
 run_animation_name = &"run_air"
@@ -136,6 +138,7 @@ element = 1
 
 [node name="GroundedWater" type="Node" parent="StateMachine"]
 script = ExtResource("4_h8s85")
+horizontal_damping = 35.0
 throw_modifier = 1.3
 idle_animation_name = &"idle_water"
 run_animation_name = &"run_water"
@@ -149,6 +152,7 @@ element = 2
 
 [node name="GroundedFire" type="Node" parent="StateMachine"]
 script = ExtResource("4_h8s85")
+horizontal_damping = 35.0
 throw_modifier = 1.3
 idle_animation_name = &"idle_fire"
 run_animation_name = &"run_fire"
