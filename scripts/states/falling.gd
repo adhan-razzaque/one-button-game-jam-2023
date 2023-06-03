@@ -3,6 +3,7 @@ extends PlayerState
 
 
 @export var mass: float = 1.0
+@export var fall_animation_name: StringName
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -29,3 +30,14 @@ func physics_update(delta: float) -> void:
 	player.velocity.y += gravity * mass * delta
 
 	player.move_and_slide()
+
+
+func enter(_msg := {}) -> void:
+	_play_fall_animation()
+
+
+func _play_fall_animation() -> void:
+	if fall_animation_name.is_empty():
+		return
+	
+	player.animator.play(fall_animation_name)

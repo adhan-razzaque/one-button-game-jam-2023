@@ -8,9 +8,9 @@ var pull_started := false
 var pull_vector := Vector2()
 var start_position := Vector2()
 
-@export var animator_path: NodePath = "AnimatedSprite2D"
+@export var _animator_path: NodePath = "AnimatedSprite2D"
 
-@onready var animated_sprite: AnimatedSprite2D = get_node(animator_path)
+@onready var animator: AnimatedSprite2D = get_node(_animator_path)
 
 
 func _on_state_machine_transitioned(_node_path: NodePath):

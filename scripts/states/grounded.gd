@@ -5,6 +5,8 @@ extends PlayerState
 @export var throw_modifier := 1.2
 @export var max_throw_length := 500.0
 @export var min_throw_length := 1.0
+@export var idle_animation_name: StringName
+@export var run_animation_name: StringName
 
 var pull_started := false
 var pull_vector := Vector2()
@@ -15,6 +17,8 @@ var start_position := Vector2()
 func enter(_msg := {}) -> void:
 	# We must declare all the properties we access through `player` in the `Player.gd` script.
 	player.velocity = Vector2.ZERO
+
+	_play_idle_animation()
 
 
 ## Handle input events from `_unhandled_input()`
@@ -73,3 +77,10 @@ func physics_update(_delta: float) -> void:
 		player.velocity.x = move_toward(player.velocity.x, 0, horizontal_damping)
 
 	player.move_and_slide()
+
+
+func _play_idle_animation() -> void:
+	if idle_animation_name.is_empty():
+		return
+	
+	player.animator.play(idle_animation_name)
