@@ -17,8 +17,4 @@ Should be supported by any version of Godot `4.0.x`
 
 - [Godot Easing Functions](https://github.com/ferdiu/godot-easing-functions) by
   ferdiu
-- [Pixel Platformer](https://kenney.nl/assets/pixel-platformer) by Kenney
-- [Pixel Platformer Blocks](https://kenney.nl/assets/pixel-platformer-blocks) by
-  Kenney
-- [Pixel Platformer Industrial Expansion](https://kenney.nl/assets/pixel-platformer-industrial-expansion)
-  by Kenney
+- Art and Sound by [kenney](https://kenney.nl/)
