@@ -33,9 +33,9 @@ func physics_update(delta: float) -> void:
 
 	player.move_and_slide()
 
-	for i in player.get_slide_collision_count():
-		var collision = player.get_slide_collision(i)
-		print("I collided with ", collision.get_collider().name)
+	# for i in player.get_slide_collision_count():
+	# 	var collision = player.get_slide_collision(i)
+	# 	print("I collided with ", collision.get_collider().name)
 
 
 func enter(_msg := {}) -> void:
