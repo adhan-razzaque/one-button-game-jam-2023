@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjjgwukdtugwm"]
+[gd_scene load_steps=8 format=3 uid="uid://cjjgwukdtugwm"]
 
 [ext_resource type="TileSet" uid="uid://b403houmbc41e" path="res://resources/platformer_tileset.tres" id="1_2t6ig"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_ckbej"]
 [ext_resource type="FontFile" uid="uid://cj5pmwf23rls8" path="res://art/kenney_kenney-fonts/Fonts/Kenney Pixel.ttf" id="2_v5lko"]
 [ext_resource type="Script" path="res://scripts/hover_control.gd" id="4_otnni"]
+[ext_resource type="PackedScene" uid="uid://6koq41nwxkdq" path="res://scenes/ui_audio_player.tscn" id="5_ugdyu"]
 
 [sub_resource type="Theme" id="Theme_qk437"]
 BoxContainer/constants/separation = 16
@@ -85,5 +86,11 @@ text = "[center][color=brown]Smash[/color], [color=darkgray]Dash[/color],  [colo
 script = ExtResource("4_otnni")
 frequency = 2.0
 
+[node name="UIAudioPlayer" parent="." instance=ExtResource("5_ugdyu")]
+
+[connection signal="mouse_entered" from="VBoxContainer/StartButton" to="UIAudioPlayer" method="_on_button_entered"]
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/StartButton" to="UIAudioPlayer" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/ControlsButton" to="UIAudioPlayer" method="_on_button_entered"]
 [connection signal="pressed" from="VBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ControlsButton" to="UIAudioPlayer" method="_on_button_pressed"]
