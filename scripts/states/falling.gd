@@ -40,7 +40,9 @@ func physics_update(delta: float) -> void:
 		var tilemap: TileMap = collision.get_collider() as TileMap
 		if tilemap:
 			print("I collided with ", collision.get_collider().name)
-			_handle_teleport_collision(collision, tilemap)
+			var is_teleport = _handle_teleport_collision(collision, tilemap)
+			if is_teleport:
+				break
 
 
 func enter(_msg := {}) -> void:
@@ -55,18 +57,22 @@ func _play_fall_animation() -> void:
 	
 	player.animator.play(fall_animation_name)
 
-func _handle_teleport_collision(collision: KinematicCollision2D, tilemap: TileMap) -> void:
+func _handle_teleport_collision(collision: KinematicCollision2D, tilemap: TileMap) -> bool:
 	var coords: Vector2i = tilemap.get_coords_for_body_rid(collision.get_collider_rid())
 	var data: TileData = tilemap.get_cell_tile_data(1, coords)
 
 	if not data:
-		return
+		return false
 
 	var is_teleport: bool = data.get_custom_data("is_teleport") as bool
 
 	if not is_teleport:
-		return
+		return false
 	
 	if teleport_sound:
 		SoundManager.play_sound(teleport_sound)
+		
+	tilemap.erase_cell(1, coords)
+		
 	GameManager.goto_next_scene()
+	return true

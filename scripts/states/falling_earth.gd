@@ -23,8 +23,10 @@ func physics_update(delta: float) -> void:
 		var tilemap: TileMap = collision.get_collider() as TileMap
 		if tilemap:
 			print("I collided with ", collision.get_collider().name)
+			var is_teleport = _handle_teleport_collision(collision, tilemap)
+			if is_teleport:
+				break
 			_handle_tilemap_collision(collision, tilemap)
-			_handle_teleport_collision(collision, tilemap)
 
 
 func _handle_tilemap_collision(collision: KinematicCollision2D, tilemap: TileMap) -> void:

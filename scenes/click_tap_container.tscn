@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyu4krsfxutpe"]
+
+[ext_resource type="Texture2D" uid="uid://cjtxwoitvdblm" path="res://art/xelu_prompts/Mouse_Left_Key_Dark.png" id="1_o1cpf"]
+[ext_resource type="Texture2D" uid="uid://dnn2bdb65rkmr" path="res://art/xelu_prompts/Mouse_Simple_Key_Dark.png" id="2_upl47"]
+[ext_resource type="Script" path="res://scripts/run_at_start.gd" id="3_pxy6m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k1e52"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_o1cpf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_upl47")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="ClickTapContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 142.0
+offset_top = 82.0
+offset_right = 187.0
+offset_bottom = 122.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.682, 0.682)
+sprite_frames = SubResource("SpriteFrames_k1e52")
+frame_progress = 0.761004
+script = ExtResource("3_pxy6m")

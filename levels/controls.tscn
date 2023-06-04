@@ -1,120 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://b4gkq40p6pb76"]
+[gd_scene load_steps=8 format=3 uid="uid://b4gkq40p6pb76"]
 
 [ext_resource type="Script" path="res://scripts/controls_menu.gd" id="1_3r7k8"]
 [ext_resource type="TileSet" uid="uid://b403houmbc41e" path="res://resources/platformer_tileset.tres" id="1_7ouk1"]
 [ext_resource type="PackedScene" uid="uid://6koq41nwxkdq" path="res://scenes/ui_audio_player.tscn" id="2_m1x25"]
 [ext_resource type="FontFile" uid="uid://cj5pmwf23rls8" path="res://art/kenney_kenney-fonts/Fonts/Kenney Pixel.ttf" id="4_7nxc6"]
 [ext_resource type="Theme" uid="uid://ch4gqrn2m6ftb" path="res://resources/controls_theme.tres" id="5_xttyp"]
-[ext_resource type="Texture2D" uid="uid://cjtxwoitvdblm" path="res://art/xelu_prompts/Mouse_Left_Key_Dark.png" id="6_1pntu"]
-[ext_resource type="Texture2D" uid="uid://dnn2bdb65rkmr" path="res://art/xelu_prompts/Mouse_Simple_Key_Dark.png" id="7_nofl4"]
-[ext_resource type="Script" path="res://scripts/run_at_start.gd" id="8_mrai1"]
-[ext_resource type="Script" path="res://scripts/play_animation.gd" id="9_up5at"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_k1e52"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_1pntu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_nofl4")
-}],
-"loop": true,
-"name": &"default",
-"speed": 2.0
-}]
-
-[sub_resource type="Animation" id="Animation_k6tn5"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(41, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(48, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_qpf7g"]
-resource_name = "click_drag"
-loop_mode = 1
-step = 0.2
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(41, -0.25, 0, 0.25, 0, 130, -0.1, -48.5, 0.1, 67.5, 221, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5, 1)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(48, -0.25, 0, 0.25, 0, 83, -0.25, 0, 0.25, 0, 54, -0.4, 16.5, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5, 1)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5, 1)
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:frame")
-tracks/3/interp = 2
-tracks/3/loop_wrap = false
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ojh46"]
-_data = {
-"RESET": SubResource("Animation_k6tn5"),
-"click_drag": SubResource("Animation_qpf7g")
-}
+[ext_resource type="PackedScene" uid="uid://cyu4krsfxutpe" path="res://scenes/click_tap_container.tscn" id="6_qdc0b"]
+[ext_resource type="PackedScene" uid="uid://dc8ilykplkpm6" path="res://scenes/click_drag_container.tscn" id="7_lpwhd"]
 
 [node name="Controls" type="Control"]
 layout_mode = 3
@@ -174,37 +66,8 @@ layout_mode = 2
 theme = ExtResource("5_xttyp")
 text = "Charge jump and let go to release"
 
-[node name="ClickTapContainer" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 142.0
-offset_top = 82.0
-offset_right = 187.0
-offset_bottom = 122.0
+[node name="ClickTapContainer" parent="." instance=ExtResource("6_qdc0b")]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ClickTapContainer"]
-scale = Vector2(0.682, 0.682)
-sprite_frames = SubResource("SpriteFrames_k1e52")
-frame_progress = 0.761004
-script = ExtResource("8_mrai1")
-
-[node name="ClickDragContainer" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 8.0
-offset_top = 151.0
-offset_right = 312.0
-offset_bottom = 248.0
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ClickDragContainer"]
-position = Vector2(41, 48)
-scale = Vector2(0.682, 0.682)
-sprite_frames = SubResource("SpriteFrames_k1e52")
-frame = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ClickDragContainer/AnimatedSprite2D"]
-libraries = {
-"": SubResource("AnimationLibrary_ojh46")
-}
-script = ExtResource("9_up5at")
-animation_name = "click_drag"
+[node name="ClickDragContainer" parent="." instance=ExtResource("7_lpwhd")]
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
