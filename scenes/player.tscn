@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bu5rcrpsnttq1"]
+[gd_scene load_steps=23 format=3 uid="uid://bu5rcrpsnttq1"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_gsmm0"]
 [ext_resource type="Texture2D" uid="uid://nkiapb44cytb" path="res://art/player/player_0004.png" id="2_hewar"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://vt31diah4hbm" path="res://audio/kenney_impact-sounds/Audio/impactMetal_heavy_002.ogg" id="13_lvjfq"]
 [ext_resource type="AudioStream" uid="uid://dcqjna2reo5sm" path="res://audio/527525__jerimee__vibrating-thud.wav" id="15_g5dms"]
 [ext_resource type="AudioStream" uid="uid://cee6waeljn5m4" path="res://audio/kenney_impact-sounds/Audio/impactSoft_heavy_004.ogg" id="16_g8fla"]
+[ext_resource type="AudioStream" uid="uid://d1errr78gc0lc" path="res://audio/kenney ui audio/switch12.ogg" id="16_jdkcv"]
 [ext_resource type="AudioStream" uid="uid://bmqdfkh3yavyk" path="res://audio/404763__owlstorm__retro-video-game-sfx-splash.wav" id="18_4trky"]
 [ext_resource type="AudioStream" uid="uid://bcesnu0wgqgbm" path="res://audio/573117__silver887__8-bit-flame-or-lava.wav" id="19_u2r3s"]
 
@@ -143,6 +144,7 @@ script = ExtResource("12_tcvgs")
 break_sound = ExtResource("15_g5dms")
 mass = 6.0
 fall_animation_name = &"run_earth"
+teleport_sound = ExtResource("16_jdkcv")
 collision_mask = 15
 
 [node name="GroundedAir" type="Node" parent="StateMachine"]
@@ -170,6 +172,7 @@ end_cap_mode = 2
 script = ExtResource("5_mgrh4")
 mass = 3.0
 fall_animation_name = &"run_air"
+teleport_sound = ExtResource("16_jdkcv")
 collision_mask = 15
 element = 1
 
@@ -198,6 +201,7 @@ end_cap_mode = 2
 script = ExtResource("5_mgrh4")
 mass = 4.5
 fall_animation_name = &"run_water"
+teleport_sound = ExtResource("16_jdkcv")
 collision_mask = 11
 element = 2
 
@@ -226,6 +230,7 @@ end_cap_mode = 2
 script = ExtResource("5_mgrh4")
 mass = 4.5
 fall_animation_name = &"run_fire"
+teleport_sound = ExtResource("16_jdkcv")
 collision_mask = 7
 element = 3
 

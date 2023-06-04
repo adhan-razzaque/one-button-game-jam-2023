@@ -4,6 +4,7 @@ extends PlayerState
 
 @export var mass: float = 1.0
 @export var fall_animation_name: StringName
+@export var teleport_sound: AudioStream
 @export_flags_2d_physics var collision_layer: int = 1
 @export_flags_2d_physics var collision_mask: int = 1
 
@@ -33,9 +34,13 @@ func physics_update(delta: float) -> void:
 
 	player.move_and_slide()
 
-	# for i in player.get_slide_collision_count():
-	# 	var collision = player.get_slide_collision(i)
-	# 	print("I collided with ", collision.get_collider().name)
+	for i in player.get_slide_collision_count():
+		var collision: KinematicCollision2D = player.get_slide_collision(i)
+		
+		var tilemap: TileMap = collision.get_collider() as TileMap
+		if tilemap:
+			print("I collided with ", collision.get_collider().name)
+			_handle_teleport_collision(collision, tilemap)
 
 
 func enter(_msg := {}) -> void:
@@ -49,3 +54,19 @@ func _play_fall_animation() -> void:
 		return
 	
 	player.animator.play(fall_animation_name)
+
+func _handle_teleport_collision(collision: KinematicCollision2D, tilemap: TileMap) -> void:
+	var coords: Vector2i = tilemap.get_coords_for_body_rid(collision.get_collider_rid())
+	var data: TileData = tilemap.get_cell_tile_data(1, coords)
+
+	if not data:
+		return
+
+	var is_teleport: bool = data.get_custom_data("is_teleport") as bool
+
+	if not is_teleport:
+		return
+	
+	if teleport_sound:
+		SoundManager.play_sound(teleport_sound)
+	GameManager.goto_next_scene()
