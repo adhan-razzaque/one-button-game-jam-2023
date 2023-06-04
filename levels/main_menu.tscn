@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjjgwukdtugwm"]
+[gd_scene load_steps=7 format=3 uid="uid://cjjgwukdtugwm"]
 
 [ext_resource type="TileSet" uid="uid://b403houmbc41e" path="res://resources/platformer_tileset.tres" id="1_2t6ig"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_ckbej"]
 [ext_resource type="FontFile" uid="uid://cj5pmwf23rls8" path="res://art/kenney_kenney-fonts/Fonts/Kenney Pixel.ttf" id="2_v5lko"]
+[ext_resource type="Script" path="res://scripts/hover_control.gd" id="4_otnni"]
 
 [sub_resource type="Theme" id="Theme_qk437"]
 BoxContainer/constants/separation = 16
@@ -18,6 +20,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ckbej")
+start_scene_path = "res://levels/test.tscn"
 
 [node name="Background" type="Control" parent="."]
 layout_mode = 1
@@ -70,11 +74,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -204.0
-offset_top = -102.0
+offset_top = -109.0
 offset_right = 204.0
-offset_bottom = -16.0
+offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_14r7h")
 bbcode_enabled = true
 text = "[center][color=brown]Smash[/color], [color=darkgray]Dash[/color],  [color=lightblue]Splash[/color],  and [color=orange]Flash[/color] [/center]"
+script = ExtResource("4_otnni")
+frequency = 2.0
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
