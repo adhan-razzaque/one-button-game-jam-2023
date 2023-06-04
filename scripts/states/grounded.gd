@@ -9,6 +9,8 @@ extends PlayerState
 @export var idle_animation_name: StringName
 @export var run_animation_name: StringName
 @export var line2D_path: NodePath
+@export var jump_sound: AudioStream
+@export var impact_sound: AudioStream
 
 @onready var _line2D := get_node(line2D_path) as Line2D
 
@@ -30,6 +32,9 @@ func enter(_msg := {}) -> void:
 	player.velocity = Vector2.ZERO
 
 	_play_idle_animation()
+	
+	if impact_sound:
+		SoundManager.play_sound(impact_sound)
 
 
 ## Handle input events from `_unhandled_input()`
@@ -83,6 +88,9 @@ func calculate_pull(start: Vector2, end: Vector2) -> void:
 		pull_vector = Vector2.ZERO
 		state_transition("Grounded", true)
 		return
+	
+	if jump_sound:
+		SoundManager.play_sound(jump_sound)
 	
 	# Remap to cubic ease out curve
 	var dist_sign: Vector2 = dist.sign()

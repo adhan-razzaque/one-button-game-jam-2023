@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bu5rcrpsnttq1"]
+[gd_scene load_steps=22 format=3 uid="uid://bu5rcrpsnttq1"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_gsmm0"]
 [ext_resource type="Texture2D" uid="uid://nkiapb44cytb" path="res://art/player/player_0004.png" id="2_hewar"]
@@ -12,7 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://eup4poadchai" path="res://art/player/player_0005.png" id="6_28dtc"]
 [ext_resource type="Texture2D" uid="uid://dwpw3w4wdao2p" path="res://art/player/player_0003.png" id="7_epohd"]
 [ext_resource type="Texture2D" uid="uid://bdmx0lusbhakh" path="res://art/player/player_0007.png" id="8_eoi8f"]
+[ext_resource type="AudioStream" uid="uid://ct3ddkk5col7r" path="res://audio/369515__lefty_studios__jumping-sfx.wav" id="12_l0oky"]
 [ext_resource type="Script" path="res://scripts/states/falling_earth.gd" id="12_tcvgs"]
+[ext_resource type="AudioStream" uid="uid://vt31diah4hbm" path="res://audio/kenney_impact-sounds/Audio/impactMetal_heavy_002.ogg" id="13_lvjfq"]
+[ext_resource type="AudioStream" uid="uid://dcqjna2reo5sm" path="res://audio/527525__jerimee__vibrating-thud.wav" id="15_g5dms"]
+[ext_resource type="AudioStream" uid="uid://cee6waeljn5m4" path="res://audio/kenney_impact-sounds/Audio/impactSoft_heavy_004.ogg" id="16_g8fla"]
+[ext_resource type="AudioStream" uid="uid://bmqdfkh3yavyk" path="res://audio/404763__owlstorm__retro-video-game-sfx-splash.wav" id="18_4trky"]
+[ext_resource type="AudioStream" uid="uid://bcesnu0wgqgbm" path="res://audio/573117__silver887__8-bit-flame-or-lava.wav" id="19_u2r3s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vx8pw"]
 size = Vector2(20, 23)
@@ -121,6 +127,8 @@ max_throw_length = 125.0
 idle_animation_name = &"idle_earth"
 run_animation_name = &"run_earth"
 line2D_path = NodePath("Line2D")
+jump_sound = ExtResource("12_l0oky")
+impact_sound = ExtResource("13_lvjfq")
 
 [node name="Line2D" type="Line2D" parent="StateMachine/GroundedEarth"]
 visible = false
@@ -132,6 +140,7 @@ end_cap_mode = 2
 
 [node name="FallingEarth" type="Node" parent="StateMachine"]
 script = ExtResource("12_tcvgs")
+break_sound = ExtResource("15_g5dms")
 mass = 6.0
 fall_animation_name = &"run_earth"
 collision_mask = 15
@@ -145,6 +154,8 @@ max_throw_length = 125.0
 idle_animation_name = &"idle_air"
 run_animation_name = &"run_air"
 line2D_path = NodePath("Line2D2")
+jump_sound = ExtResource("12_l0oky")
+impact_sound = ExtResource("16_g8fla")
 element = 1
 
 [node name="Line2D2" type="Line2D" parent="StateMachine/GroundedAir"]
@@ -171,6 +182,8 @@ max_throw_length = 125.0
 idle_animation_name = &"idle_water"
 run_animation_name = &"run_water"
 line2D_path = NodePath("Line2D3")
+jump_sound = ExtResource("12_l0oky")
+impact_sound = ExtResource("18_4trky")
 element = 2
 
 [node name="Line2D3" type="Line2D" parent="StateMachine/GroundedWater"]
@@ -197,6 +210,8 @@ max_throw_length = 125.0
 idle_animation_name = &"idle_fire"
 run_animation_name = &"run_fire"
 line2D_path = NodePath("Line2D4")
+jump_sound = ExtResource("12_l0oky")
+impact_sound = ExtResource("19_u2r3s")
 element = 3
 
 [node name="Line2D4" type="Line2D" parent="StateMachine/GroundedFire"]

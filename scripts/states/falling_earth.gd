@@ -2,6 +2,9 @@ class_name FallingEarth
 extends Falling
 
 
+@export var break_sound: AudioStream
+
+
 func physics_update(delta: float) -> void:
 	# If you have platforms that break when standing on them, you need that check for 
 	# the character to fall.
@@ -32,5 +35,9 @@ func _handle_tilemap_collision(collision: KinematicCollision2D, tilemap: TileMap
 
 	var is_breakable: bool = data.get_custom_data("breakable") as bool
 
-	if is_breakable:
-		tilemap.erase_cell(1, coords)
+	if not is_breakable:
+		return
+	
+	tilemap.erase_cell(1, coords)
+	if break_sound:
+		SoundManager.play_sound(break_sound)
