@@ -12,11 +12,11 @@ func _ready() -> void:
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
 
-	for scene in scenes_list:
-		if scene and get_node(scene.resource_path) is Node:
-			continue
+	# for scene in scenes_list:
+	# 	if scene and get_node(scene.resource_path) is Node:
+	# 		continue
 
-		push_error("Scenes list must only contain scenes")
+	# 	push_error("Scenes list must only contain scenes")
 
 
 func goto_next_scene() -> void:

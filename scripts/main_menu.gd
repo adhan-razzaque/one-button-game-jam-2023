@@ -20,5 +20,11 @@ func _on_controls_button_pressed() -> void:
 	if controls_scene_path.is_empty():
 		return
 
-	var controls_scene: Node = load(controls_scene_path).instance()
-	get_tree().current_scene.add_child(controls_scene)
+	# Load the new scene.
+	var s = ResourceLoader.load(controls_scene_path)
+
+	# Instance the new scene.
+	var controls_scene = s.instantiate()
+
+	# Add it to the active scene, as child of root.
+	add_child(controls_scene)
