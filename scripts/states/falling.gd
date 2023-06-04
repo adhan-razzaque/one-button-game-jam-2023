@@ -4,6 +4,8 @@ extends PlayerState
 
 @export var mass: float = 1.0
 @export var fall_animation_name: StringName
+@export_flags_2d_physics var collision_layer: int = 1
+@export_flags_2d_physics var collision_mask: int = 1
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -31,9 +33,15 @@ func physics_update(delta: float) -> void:
 
 	player.move_and_slide()
 
+	for i in player.get_slide_collision_count():
+		var collision = player.get_slide_collision(i)
+		print("I collided with ", collision.get_collider().name)
+
 
 func enter(_msg := {}) -> void:
 	_play_fall_animation()
+	player.collision_layer = collision_layer
+	player.collision_mask = collision_mask
 
 
 func _play_fall_animation() -> void:

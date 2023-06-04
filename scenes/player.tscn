@@ -132,6 +132,7 @@ end_cap_mode = 2
 script = ExtResource("5_mgrh4")
 mass = 6.0
 fall_animation_name = &"run_earth"
+collision_mask = 13
 
 [node name="GroundedAir" type="Node" parent="StateMachine"]
 script = ExtResource("4_h8s85")
@@ -156,6 +157,7 @@ end_cap_mode = 2
 script = ExtResource("5_mgrh4")
 mass = 3.0
 fall_animation_name = &"run_air"
+collision_mask = 15
 element = 1
 
 [node name="GroundedWater" type="Node" parent="StateMachine"]
@@ -181,6 +183,7 @@ end_cap_mode = 2
 script = ExtResource("5_mgrh4")
 mass = 4.5
 fall_animation_name = &"run_water"
+collision_mask = 11
 element = 2
 
 [node name="GroundedFire" type="Node" parent="StateMachine"]
@@ -206,6 +209,7 @@ end_cap_mode = 2
 script = ExtResource("5_mgrh4")
 mass = 4.5
 fall_animation_name = &"run_fire"
+collision_mask = 7
 element = 3
 
 [connection signal="transitioned" from="StateMachine" to="." method="_on_state_machine_transitioned"]
