@@ -113,8 +113,9 @@ initial_state = NodePath("GroundedEarth")
 [node name="GroundedEarth" type="Node" parent="StateMachine"]
 script = ExtResource("4_h8s85")
 horizontal_damping = 45.0
-throw_modifier = 1.5
-max_throw_length = 250.0
+vertical_modifier = 6.5
+horizontal_modifier = 3.0
+max_throw_length = 125.0
 idle_animation_name = &"idle_earth"
 run_animation_name = &"run_earth"
 line2D_path = NodePath("Line2D")
@@ -129,14 +130,15 @@ end_cap_mode = 2
 
 [node name="FallingEarth" type="Node" parent="StateMachine"]
 script = ExtResource("5_mgrh4")
-mass = 3.0
+mass = 6.0
 fall_animation_name = &"run_earth"
 
 [node name="GroundedAir" type="Node" parent="StateMachine"]
 script = ExtResource("4_h8s85")
 horizontal_damping = 25.0
-throw_modifier = 2.0
-max_throw_length = 250.0
+vertical_modifier = 7.0
+horizontal_modifier = 3.5
+max_throw_length = 125.0
 idle_animation_name = &"idle_air"
 run_animation_name = &"run_air"
 line2D_path = NodePath("Line2D2")
@@ -152,15 +154,16 @@ end_cap_mode = 2
 
 [node name="FallingAir" type="Node" parent="StateMachine"]
 script = ExtResource("5_mgrh4")
-mass = 1.5
+mass = 3.0
 fall_animation_name = &"run_air"
 element = 1
 
 [node name="GroundedWater" type="Node" parent="StateMachine"]
 script = ExtResource("4_h8s85")
 horizontal_damping = 35.0
-throw_modifier = 1.3
-max_throw_length = 250.0
+vertical_modifier = 6.75
+horizontal_modifier = 3.25
+max_throw_length = 125.0
 idle_animation_name = &"idle_water"
 run_animation_name = &"run_water"
 line2D_path = NodePath("Line2D3")
@@ -176,15 +179,16 @@ end_cap_mode = 2
 
 [node name="FallingWater" type="Node" parent="StateMachine"]
 script = ExtResource("5_mgrh4")
-mass = 1.5
+mass = 4.5
 fall_animation_name = &"run_water"
 element = 2
 
 [node name="GroundedFire" type="Node" parent="StateMachine"]
 script = ExtResource("4_h8s85")
 horizontal_damping = 35.0
-throw_modifier = 1.3
-max_throw_length = 250.0
+vertical_modifier = 6.75
+horizontal_modifier = 3.25
+max_throw_length = 125.0
 idle_animation_name = &"idle_fire"
 run_animation_name = &"run_fire"
 line2D_path = NodePath("Line2D4")
@@ -200,7 +204,7 @@ end_cap_mode = 2
 
 [node name="FallingFire" type="Node" parent="StateMachine"]
 script = ExtResource("5_mgrh4")
-mass = 1.5
+mass = 4.5
 fall_animation_name = &"run_fire"
 element = 3
 

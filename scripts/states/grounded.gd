@@ -2,7 +2,8 @@ class_name Grounded
 extends PlayerState
 
 @export var horizontal_damping := 10.0
-@export var throw_modifier := 1.2
+@export var vertical_modifier := 1.0
+@export var horizontal_modifier := 1.0
 @export var max_throw_length := 500.0
 @export var min_throw_length := 1.0
 @export var idle_animation_name: StringName
@@ -92,6 +93,9 @@ func calculate_pull(start: Vector2, end: Vector2) -> void:
 	dist *= max_throw_length
 	dist *= dist_sign
 
+	dist.x *= horizontal_modifier
+	dist.y *= vertical_modifier
+
 	pull_vector = dist
 
 
@@ -114,7 +118,7 @@ func physics_update(_delta: float) -> void:
 
 	# Movement
 	if not pull_vector.is_zero_approx():
-		player.velocity = pull_vector * throw_modifier
+		player.velocity = pull_vector
 		pull_vector = Vector2.ZERO
 		_play_run_animation()
 	else:
