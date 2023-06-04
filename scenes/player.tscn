@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bu5rcrpsnttq1"]
+[gd_scene load_steps=16 format=3 uid="uid://bu5rcrpsnttq1"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_gsmm0"]
 [ext_resource type="Texture2D" uid="uid://nkiapb44cytb" path="res://art/player/player_0004.png" id="2_hewar"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://eup4poadchai" path="res://art/player/player_0005.png" id="6_28dtc"]
 [ext_resource type="Texture2D" uid="uid://dwpw3w4wdao2p" path="res://art/player/player_0003.png" id="7_epohd"]
 [ext_resource type="Texture2D" uid="uid://bdmx0lusbhakh" path="res://art/player/player_0007.png" id="8_eoi8f"]
+[ext_resource type="Script" path="res://scripts/states/falling_earth.gd" id="12_tcvgs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omrd4"]
 height = 24.0
@@ -129,10 +130,10 @@ begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="FallingEarth" type="Node" parent="StateMachine"]
-script = ExtResource("5_mgrh4")
+script = ExtResource("12_tcvgs")
 mass = 6.0
 fall_animation_name = &"run_earth"
-collision_mask = 13
+collision_mask = 15
 
 [node name="GroundedAir" type="Node" parent="StateMachine"]
 script = ExtResource("4_h8s85")

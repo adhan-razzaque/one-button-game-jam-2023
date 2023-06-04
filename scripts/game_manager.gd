@@ -5,9 +5,10 @@ extends Node
 
 var current_scene: Node = null
 var current_scene_index := 0
+var current_tile_map: TileMap
 
 
-func _ready():
+func _ready() -> void:
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
 
@@ -18,7 +19,7 @@ func _ready():
 		push_error("Scenes list must only contain scenes")
 
 
-func goto_next_scene():
+func goto_next_scene() -> void:
 	if current_scene_index + 1 == scenes_list.size():
 		return
 
@@ -27,7 +28,7 @@ func goto_next_scene():
 	goto_scene(scenes_list[current_scene_index].resource_path)
 
 
-func goto_scene(path):
+func goto_scene(path) -> void:
 	# This function will usually be called from a signal callback,
 	# or some other function in the current scene.
 	# Deleting the current scene at this point is
@@ -40,7 +41,7 @@ func goto_scene(path):
 	call_deferred("_deferred_goto_scene", path)
 
 
-func _deferred_goto_scene(path):
+func _deferred_goto_scene(path) -> void:
 	# It is now safe to remove the current scene
 	current_scene.free()
 
