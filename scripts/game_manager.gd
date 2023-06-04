@@ -2,6 +2,7 @@ extends Node
 
 
 @export var scenes_list: Array[Resource] = []
+@export var background_music: AudioStream
 
 var current_scene: Node = null
 var current_scene_index := 0
@@ -17,6 +18,11 @@ func _ready() -> void:
 	# 		continue
 
 	# 	push_error("Scenes list must only contain scenes")
+	call_deferred("_play_background_music_deferred")
+
+
+func _play_background_music_deferred() -> void:
+	SoundManager.play_music_at_volume(background_music, -6)
 
 
 func goto_next_scene() -> void:

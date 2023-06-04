@@ -14,8 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://bdmx0lusbhakh" path="res://art/player/player_0007.png" id="8_eoi8f"]
 [ext_resource type="Script" path="res://scripts/states/falling_earth.gd" id="12_tcvgs"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omrd4"]
-height = 24.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vx8pw"]
+size = Vector2(20, 23)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ujypr"]
 animations = [{
@@ -101,7 +101,8 @@ position = Vector2(565, 73)
 script = ExtResource("1_gsmm0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_omrd4")
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_vx8pw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ujypr")

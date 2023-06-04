@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bruamogrut72r"]
+[gd_scene load_steps=5 format=3 uid="uid://bruamogrut72r"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_ojl0e"]
 [ext_resource type="PackedScene" uid="uid://dxd5m2gw8l2ek" path="res://levels/test.tscn" id="2_mh2tx"]
 [ext_resource type="PackedScene" uid="uid://cjjgwukdtugwm" path="res://levels/main_menu.tscn" id="2_xs0ic"]
+[ext_resource type="AudioStream" uid="uid://do05tqq8hpd2d" path="res://audio/396960__orginaljun__chiptune-loop-episode-01.wav" id="4_xf6hb"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_ojl0e")
 scenes_list = Array[Resource]([ExtResource("2_xs0ic"), ExtResource("2_mh2tx")])
+background_music = ExtResource("4_xf6hb")

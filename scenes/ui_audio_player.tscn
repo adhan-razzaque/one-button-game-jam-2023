@@ -6,11 +6,5 @@
 
 [node name="UIAudioPlayer" type="Node"]
 script = ExtResource("1_4fimj")
-button_press_stream_path = NodePath("ButtonPressStream")
-button_hover_stream_path = NodePath("ButtonHoverStream")
-
-[node name="ButtonPressStream" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_p7b7r")
-
-[node name="ButtonHoverStream" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_sewg3")
+button_press_sound = ExtResource("1_p7b7r")
+button_hover_sound = ExtResource("2_sewg3")
