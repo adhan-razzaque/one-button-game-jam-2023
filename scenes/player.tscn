@@ -104,7 +104,7 @@ shape = SubResource("CapsuleShape2D_omrd4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ujypr")
-animation = &"run_earth"
+animation = &"idle_earth"
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_5f34i")
