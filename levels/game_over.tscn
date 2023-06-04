@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://fneawn24iehh"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_adind"]
+[ext_resource type="Script" path="res://scripts/game_over_menu.gd" id="1_t7ws5"]
 [ext_resource type="TileSet" uid="uid://b403houmbc41e" path="res://resources/platformer_tileset.tres" id="2_cg0u4"]
 [ext_resource type="FontFile" uid="uid://cj5pmwf23rls8" path="res://art/kenney_kenney-fonts/Fonts/Kenney Pixel.ttf" id="3_6r3ut"]
 [ext_resource type="Script" path="res://scripts/hover_control.gd" id="4_dgulc"]
@@ -17,9 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_adind")
-start_scene_path = "res://levels/test.tscn"
-controls_scene_path = "res://levels/controls.tscn"
+script = ExtResource("1_t7ws5")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_cg0u4")
@@ -46,3 +44,22 @@ text = "[center]Game Over![/center]
 [center]Thank you for playing :)[/center]"
 script = ExtResource("4_dgulc")
 frequency = 2.0
+
+[node name="RestartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -98.0
+offset_right = 27.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_6r3ut")
+text = "Restart
+"
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

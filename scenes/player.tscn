@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://bu5rcrpsnttq1"]
+[gd_scene load_steps=24 format=3 uid="uid://bu5rcrpsnttq1"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_gsmm0"]
 [ext_resource type="Texture2D" uid="uid://nkiapb44cytb" path="res://art/player/player_0004.png" id="2_hewar"]
 [ext_resource type="Texture2D" uid="uid://r4spwinmew0o" path="res://art/player/player_0000.png" id="2_tqhgm"]
+[ext_resource type="AudioStream" uid="uid://dn73sk3fgm8nn" path="res://audio/417486__mentoslat__8-bit-death-sound.wav" id="2_x3ci6"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="3_5f34i"]
 [ext_resource type="Texture2D" uid="uid://dqq2777cbkn0k" path="res://art/player/player_0002.png" id="3_cd454"]
 [ext_resource type="Texture2D" uid="uid://dmxlqab5o7d4y" path="res://art/player/player_0001.png" id="3_l3qwj"]
@@ -106,6 +107,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(565, 73)
 script = ExtResource("1_gsmm0")
+death_sound = ExtResource("2_x3ci6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)

@@ -18,15 +18,26 @@ func _ready() -> void:
 	# 		continue
 
 	# 	push_error("Scenes list must only contain scenes")
+	
 	call_deferred("_play_background_music_deferred")
 
 
 func _play_background_music_deferred() -> void:
-	SoundManager.play_music_at_volume(background_music, -6)
+	SoundManager.set_sound_volume(0.6)
+	SoundManager.play_music_at_volume(background_music, -8)
+
+
+func restart_scenes() -> void:
+	current_scene_index = -1
+	goto_next_scene()
+
+
+func reload_current_scene_index() -> void:
+	goto_scene(scenes_list[current_scene_index].resource_path)
 
 
 func goto_next_scene() -> void:
-	if current_scene_index + 1 == scenes_list.size():
+	if current_scene_index + 1 == scenes_list.size() or current_scene_index < -1:
 		return
 
 	current_scene_index += 1

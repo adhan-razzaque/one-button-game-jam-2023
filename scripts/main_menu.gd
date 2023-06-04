@@ -10,9 +10,6 @@ func _on_start_button_pressed() -> void:
 	if start_scene_path.is_empty():
 		return
 
-	# Hacked in a delay to allow button click to play
-	await get_tree().create_timer(0.1).timeout
-
 	GameManager.goto_next_scene()
 
 

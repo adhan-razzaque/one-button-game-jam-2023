@@ -75,7 +75,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_14r7h")
 bbcode_enabled = true
-text = "[center][color=brown]Smash[/color], [color=darkgray]Dash[/color],  [color=lightblue]Splash[/color],  and [color=orange]Flash[/color] [/center]"
+text = "[center][color=brown]Smash[/color], [color=darkgray]Dash[/color],  [color=lightblue]Splash[/color],  and [color=orange]Flash[/color][/center]"
 script = ExtResource("4_otnni")
 frequency = 2.0
 

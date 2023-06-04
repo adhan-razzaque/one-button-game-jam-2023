@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cg2ow4y5boskn"]
+
+[ext_resource type="FontFile" uid="uid://cj5pmwf23rls8" path="res://art/kenney_kenney-fonts/Fonts/Kenney Pixel.ttf" id="1_wb5uy"]
+
+[resource]
+RichTextLabel/colors/default_color = Color(0.160784, 0.160784, 0.160784, 1)
+RichTextLabel/font_sizes/normal_font_size = 42
+RichTextLabel/fonts/normal_font = ExtResource("1_wb5uy")

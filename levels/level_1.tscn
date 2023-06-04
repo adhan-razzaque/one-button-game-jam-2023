@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxd5m2gw8l2ek"]
+[gd_scene load_steps=6 format=3 uid="uid://rktc1ywui1as"]
 
-[ext_resource type="PackedScene" uid="uid://bu5rcrpsnttq1" path="res://scenes/player.tscn" id="1_lgp6k"]
-[ext_resource type="PackedScene" uid="uid://clfkj8xp4542t" path="res://scenes/kill_zone.tscn" id="3_74q2q"]
-[ext_resource type="TileSet" uid="uid://b403houmbc41e" path="res://resources/platformer_tileset.tres" id="3_i1yvn"]
+[ext_resource type="TileSet" uid="uid://b403houmbc41e" path="res://resources/platformer_tileset.tres" id="1_thi36"]
+[ext_resource type="PackedScene" uid="uid://bu5rcrpsnttq1" path="res://scenes/player.tscn" id="2_scw0l"]
+[ext_resource type="PackedScene" uid="uid://clfkj8xp4542t" path="res://scenes/kill_zone.tscn" id="3_rddnh"]
+[ext_resource type="Theme" uid="uid://cg2ow4y5boskn" path="res://resources/tutorial_theme.tres" id="4_fknpa"]
+[ext_resource type="Script" path="res://scripts/hover_control.gd" id="5_7s5bb"]
 
 [node name="Main" type="Node"]
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource("3_i1yvn")
+tile_set = ExtResource("1_thi36")
 cell_quadrant_size = 18
 format = 2
 layer_0/name = "background"
@@ -20,8 +22,26 @@ layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(851975, 131072, 1, 917511, 131072, 7, 851976, 131072, 1, 917512, 131072, 7, 851977, 131072, 1, 917513, 131072, 7, 851978, 131072, 1, 917514, 131072, 7, 851979, 131072, 1, 917515, 131072, 7, 851980, 131072, 1, 917516, 131072, 7, 851981, 131072, 1, 917517, 131072, 7, 851982, 131072, 1, 917518, 131072, 7, 851983, 131072, 1, 917519, 131072, 7, 851984, 131072, 1, 917520, 131072, 7, 851985, 131072, 1, 917521, 131072, 7, 851986, 131072, 1, 917522, 131072, 7, 851987, 131072, 1, 917523, 131072, 7, 851988, 131072, 1, 917524, 131072, 7, 851989, 131072, 1, 917525, 131072, 7, 851990, 131072, 1, 917526, 131072, 7, 851991, 131072, 1, 917527, 131072, 7, 851992, 131072, 1, 917528, 131072, 7, 327686, 917504, 1, 393222, 917504, 2, 458758, 917504, 2, 524294, 917504, 2, 589830, 917504, 2, 655366, 917504, 3, 851974, 65536, 1, 917510, 65536, 7, 851993, 131072, 1, 851994, 131072, 1, 851995, 131072, 1, 851998, 196608, 1, 917534, 196608, 7, 917533, 131072, 7, 917532, 131072, 7, 917531, 131072, 7, 917530, 131072, 7, 917529, 131072, 7, 851996, 131072, 1, 851997, 131072, 1, 655390, 917505, 2, 589854, 917505, 1, 524318, 917505, 1, 458782, 917505, 1, 393246, 917505, 1, 327710, 917505, 0, 786454, 393219, 0, 720918, 393219, 0, 786452, 393219, 0, 786451, 393219, 0, 720920, 393219, 0, 720921, 393219, 0, 655382, 393219, 0, 786443, 655360, 6, 720907, 655360, 5)
 
-[node name="Player" parent="." instance=ExtResource("1_lgp6k")]
+[node name="Player" parent="." instance=ExtResource("2_scw0l")]
 position = Vector2(267, 182)
 collision_mask = 15
 
-[node name="KillZone" parent="." instance=ExtResource("3_74q2q")]
+[node name="KillZone" parent="." instance=ExtResource("3_rddnh")]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -109.0
+offset_right = 204.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_fknpa")
+bbcode_enabled = true
+text = "[center][color=brown]Smash[/color], [color=darkgray]Dash[/color],  [color=lightblue]Splash[/color],  and [color=orange]Flash[/color] [/center]"
+script = ExtResource("5_7s5bb")
+frequency = 2.0
